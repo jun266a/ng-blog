@@ -1,0 +1,23 @@
+{
+  "name": "ng-blog",
+  "version": "1.0.0",
+  "description": "个人博客项目(angularJS重制版)",
+  "main": "iServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jun266a/ng-blog.git"
+  },
+  "author": "jun266a <jun266a@foxmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jun266a/ng-blog/issues"
+  },
+  "homepage": "https://github.com/jun266a/ng-blog#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mysql": "^2.15.0"
+  }
+}

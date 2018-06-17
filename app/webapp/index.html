@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>angular Template</title>
+	
+	    <!-- Bootstrap -->
+	    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	    <style type="text/css">
+	    	.rounded{
+	    		height: 202px;
+	    		border-radius: 30px;
+	    		background-color: #0083E3;
+	    		margin-bottom: 10px;
+	    		line-height: 202px;
+	    		text-align: center;
+	    	}
+	    </style>
+	</head>
+	<body ng-app="module.index">
+	    <div class="container">
+	    		<div class="col-lg-offset-1 col-lg-10 row">
+	    			<div class="col-lg-4">
+	    				<a href="#/list">
+	    					<div class="rounded">
+		    					<span> 博客管理</span>
+		    				</div>
+	    				</a>
+	    				<a href="#/edit">
+	    					<div class="rounded">
+		    					<span> 写博客</span>
+		    				</div>
+	    				</a>
+	    				<a href="#/user">
+	    					<div class="rounded">
+		    					<span> 个人中心</span>
+		    				</div>
+	    				</a>
+	    			</div>
+	    			<div class="col-lg-offset-4" ng-view></div>
+	    		</div>
+	    </div>
+	    <!-- AngularJS -->
+		<script src="bower_components/angular/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script src="bower_components/angular-route/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/service/serviceUser.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/service/serviceArticle.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/control/controlList.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/control/controlEdit.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/control/controlUser.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/index.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "ng-blog",
+  "homepage": "https://github.com/jun266a/ng-blog",
+  "authors": [
+    "jun266a <jun266a@foxmail.com>"
+  ],
+  "description": "个人博客项目(angularJS重制版)",
+  "main": "iServer.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./webapp/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.4.9",
+    "angular-route": "1.4.9",
+    "bootstrap": "3.3.7"
+  }
+}
