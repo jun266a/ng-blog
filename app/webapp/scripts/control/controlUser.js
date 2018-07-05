@@ -6,7 +6,16 @@
 			templateUrl : 'views/viewUser.html'
 		})
 	}]);
-	app.controller('controlUser',['$scope','serviceUser',function($scope,serviceArticle){
-		$scope.user = serviceUser.get();
+	app.controller('controlUser',['$scope','serviceUser',function($scope,serviceUser){
+		$scope.user = 'signin';
+		$scope.switch = function(value){
+			$scope.user = value;
+			console.log($scope.user);
+		};
+		$scope.signup = function(user){
+			if(confirmPassword == user.password){
+				serviceUser.put(user);
+			}
+		};
 	}]);
 })(angular);
