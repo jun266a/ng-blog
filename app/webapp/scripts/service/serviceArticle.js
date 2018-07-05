@@ -4,8 +4,16 @@
 		this.get = function(){
 			
 		};
-		this.put = function(){
-			
+		this.put = function(article){
+			$http({
+				method : 'post',
+				url : 'article/insert',
+				params : article
+			}).then(function successCallback(res){
+				console.log(res);
+			},function errorCallback(res){
+				
+			})
 		};
 	}]);
 })(angular);

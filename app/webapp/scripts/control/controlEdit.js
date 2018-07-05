@@ -7,6 +7,10 @@
 		})
 	}]);
 	app.controller('controlEdit',['$scope','serviceArticle',function($scope,serviceArticle){
-		$scope.list = serviceArticle.put();
+		$scope.list = serviceArticle.get();
+		$scope.save = function(article){
+			article.UID = 31;
+			serviceArticle.put(article);
+		}
 	}]);
 })(angular);
