@@ -7,10 +7,12 @@
 		})
 	}]);
 	app.controller('controlUser',['$scope','serviceUser',function($scope,serviceUser){
-		$scope.user = 'signin';
+		$scope.user = 'login';
 		$scope.switch = function(value){
 			$scope.user = value;
-			console.log($scope.user);
+		};
+		$scope.signin = function(user){
+			serviceUser.get(user);
 		};
 		$scope.signup = function(user){
 			if(confirmPassword == user.password){

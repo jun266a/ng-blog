@@ -10,7 +10,18 @@
 				console.log(res);
 			},function errorCallback(res){
 				console.log(res);
-			})
+			});
+		};
+		this.get = function(user){
+			$http({
+				method : 'post',
+				url : 'user/select',
+				params : user
+			}).then(function successCallback(res){
+				console.log(res);
+			},function errorCallback(res){
+				console.log(res);
+			});
 		};
 	}]);
 })(angular);
