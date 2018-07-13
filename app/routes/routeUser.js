@@ -6,9 +6,12 @@ const router = express.Router();
 const user = require('../dao/userDao');
 
 router.post('/insert',function(req,res){
-	user.select(req.query.user.username,function(results){
-		if(!results){
-			user.insert(req.query.user,function(results){
+	let values = req.body;
+	user.select({username : values.username},function(results){
+		if(results.length==0){
+			user.insert(values,function(results){
+				console.log(results);
+				console.log('insert');
 //				res.json(results);
 				res.end('注册成功！');
 			});
@@ -18,20 +21,27 @@ router.post('/insert',function(req,res){
 	});
 });
 router.post('/select',function(req,res){
-	user.select(req.query.user.username,function(results){
-		if(!results){
+	user.select({username : req.body.username},function(results){
+		if(results.length==0){
 			res.end('该用户名不存在！');
 		}else{
-			if(results[0].password == req.query.user.pasword){
-				res.end('登录成功！');
+			if(results[0].password == req.body.password){
+				res.json({
+					UID : results[0].id,
+					status : 1,
+					statusText : '登录成功'
+				});
 			}else{
-				res.end('密码或者账号错误！')
+				res.json({
+					status : 0,
+					statusText : '密码或者账号错误！'
+				});
 			}
 		}
 	});
 });
 router.post('/replace',function(req,res){
-	user.replace(req.query.user,function(results){
+	user.replace(req.body,function(results){
 		res.json(results);
 	});
 });

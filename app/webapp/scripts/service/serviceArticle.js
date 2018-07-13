@@ -8,7 +8,7 @@
 			$http({
 				method : 'post',
 				url : 'article/insert',
-				params : article
+				params : {article}
 			}).then(function successCallback(res){
 				console.log(res);
 			},function errorCallback(res){
