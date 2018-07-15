@@ -8,11 +8,8 @@ const user = require('../dao/userDao');
 router.post('/insert',function(req,res){
 	let values = req.body;
 	user.select({username : values.username},function(results){
-		if(results.length==0){
+		if(results.length == 0){
 			user.insert(values,function(results){
-				console.log(results);
-				console.log('insert');
-//				res.json(results);
 				res.end('注册成功！');
 			});
 		}else{
@@ -22,7 +19,7 @@ router.post('/insert',function(req,res){
 });
 router.post('/select',function(req,res){
 	user.select({username : req.body.username},function(results){
-		if(results.length==0){
+		if(results.length == 0){
 			res.end('该用户名不存在！');
 		}else{
 			if(results[0].password == req.body.password){
