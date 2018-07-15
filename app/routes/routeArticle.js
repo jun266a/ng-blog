@@ -6,11 +6,14 @@ const router = express.Router();
 const article = require('../dao/articleDao');
 
 router.post('/insert',function(req,res){
-	//req.body用于表单from提交
-	//req.query用于自定义参数提交
-//	console.log(req.query);
-	article.insert(value,function(results){
-		res.json(results);
+	console.log(req.body);
+	article.insert(req.body,function(results){
+		if(results){
+			res.json({
+				status : 1,
+				statusText : '保存成功！'
+			});
+		}
 	});
 });
 router.post('/all',function(){});

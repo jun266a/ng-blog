@@ -5,15 +5,21 @@
 			
 		};
 		this.put = function(article){
-			$http({
-				method : 'post',
-				url : 'article/insert',
-				params : {article}
-			}).then(function successCallback(res){
-				console.log(res);
+			$http.post('article/insert',article)
+			.then(function successCallback(res){
+				switch (res.data.status){
+					case 0:	
+						alert(res.data.statusText);
+						break;
+					case 1:	
+						alert(res.data.statusText);
+						break;
+					default:
+						break;
+				}
 			},function errorCallback(res){
-				
-			})
+				console.log(res);
+			});
 		};
 	}]);
 })(angular);
