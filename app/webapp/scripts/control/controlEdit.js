@@ -15,7 +15,7 @@
 		'serviceArticle',
 		'serviceCategory',
 		function($scope,serviceArticle,serviceCategory){
-			serviceCategory.get(function(data){
+			serviceCategory.all(function(data){
 				$scope.categories = data;
 			});
 			$scope.save = function(article){

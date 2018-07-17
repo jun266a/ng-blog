@@ -3,40 +3,35 @@
 </div>
 <div class="row col-sm-offset-1	">
   	<!-- Nav tabs -->
-  	<ul class="nav nav-tabs col-sm-10 " role="tablist">
-	  	<li class="active" ng-click=""><a href="JavaScript:void(0)"><span class="glyphicon glyphicon-info-sign"></span>全部 </a> </li>
-	  	<li ng-click="" ng-repeat="item in category"><a href="JavaScript:void(0)">{{item.name}}</a> </li>
-	  	<li class="" ng-click=""><a href="JavaScript:void(0)"><span class="glyphicon glyphicon-edit"></span>草稿箱 </a></li>
-	  	<li class="" ng-click=""><a href="JavaScript:void(0)"><span class="glyphicon glyphicon-trash"></span>回收站 </a></li>
+  	<ul class="nav nav-tabs col-sm-11" role="tablist">
+	  	<li class="active" ng-click=""><a href="JavaScript:void(0)">全部 </a></li>
+	  	<li ng-click="" ng-repeat="item in categories"><a href="JavaScript:void(0)">{{item.name}}</a> </li>
+	  	<li class="" ng-click=""><a href="JavaScript:void(0)">草稿箱 </a></li>
+	  	<li class="" ng-click=""><a href="JavaScript:void(0)">回收站 </a></li>
 	</ul>
   	<!-- Tab panes -->
-  	<div class="tab-content ">
-	    <div role="tabpanel " class="tab-pane active">
-	    	<ul class="list-group col-sm-10">
-				<li class="list-group-item">
-				    <h3 class="list-group-item-heading">Java 程序员面试经验分享</h3>
+	<div ng-switch="category" class="tab-content ">
+		<div ng-switch-default role="tabpanel " class="tab-pane active" >
+	    	<ul class="list-group col-sm-11">
+	    		<a ng-herf="{{item.id}}" class="list-group-item" ng-repeat="item in articles" >
+				    <h3 class="list-group-item-heading">{{item.title}}</h3>
 				    <blockquote >
 					    <p class="list-group-item-text">
-					    	<span class="label label-primary"><span class="glyphicon glyphicon-tag"></span>//栏目</span>
-					    	<span class="label label-warning"><span class="glyphicon glyphicon-user"></span>//作者</span>
-					    	<span class="label label-danger"><span class="glyphicon glyphicon-time"></span>//时间</span>
+					    	<span class="label label-primary"><span class="glyphicon glyphicon-tag"></span>{{item.category.name}}</span>
+					    	<span class="label label-warning"><span class="glyphicon glyphicon-user"></span>{{item.user.name}}</span>
+					    	<span class="label label-danger"><span class="glyphicon glyphicon-time"></span>{{item.date}}</span>
 					    </p>
 				  	</blockquote>
-				</li>
-				<li class="list-group-item">
-				    <h3 class="list-group-item-heading">Java 程序员面试经验分享</h3>
-				    <blockquote >
-					    <p class="list-group-item-text">
-					    	<span class="label label-primary">//栏目</span>
-					    	<span class="label label-warning">//作者</span>
-					    	<span class="label label-danger">//时间</span>
-					    </p>
-				  	</blockquote>
-				</li>
+				</a>
 			</ul>
-	    </div>
-  	</div>
-
+		</div>
+		<div ng-switch-when="draft">
+			
+		</div>
+		<div ng-switch-when="deleted">
+			
+		</div>
+	</div>
 </div>
 
 
