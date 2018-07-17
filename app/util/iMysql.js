@@ -10,6 +10,8 @@ let iMysql = {
 		DATABASE : 'NGBLOG',
 	},
 	VIEWS : {
+		CATEGORY : 'categoryView',
+		ARTICLE : 'articleView'
 	},
 	TABLES : {
 		ARTICLE : 'article',

@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 const article = require('../dao/articleDao');
+const artiView = require('../dao/articleView');
 
 router.post('/insert',function(req,res){
 	console.log(req.body);
@@ -14,6 +15,12 @@ router.post('/insert',function(req,res){
 				statusText : '保存成功！'
 			});
 		}
+	});
+});
+router.post('/select',function(req,res){
+	console.log(req.body);
+	artiView.select(req.body,function(results){
+		res.json(results);
 	});
 });
 router.post('/all',function(){});
