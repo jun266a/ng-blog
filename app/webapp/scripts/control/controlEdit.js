@@ -15,15 +15,19 @@
 		'serviceArticle',
 		'serviceCategory',
 		function($scope,serviceArticle,serviceCategory){
+			$scope.$on('UID',function(e,m){
+				//未完成
+				$scope.UID = m;
+			});
 			serviceCategory.all(function(data){
 				$scope.categories = data;
 			});
 			$scope.save = function(article){
-				article.user = 7;
+				article.user = $scope.UID;
 				article.date = new Date().toLocaleDateString();
 				article.statu = 0;
 				console.log(article);
-				serviceArticle.put(article);
+//				serviceArticle.put(article);
 			}
 		}
 	]);

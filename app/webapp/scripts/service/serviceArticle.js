@@ -1,12 +1,13 @@
 (function(angular){
 	var app = angular.module('module.service.article',[]);
 	app.service('serviceArticle',['$http',function($http){
-		this.get = function(UID,callback){
+		var articles = [];
+		this.get = function(UID){
+			articles = [];
 			$http.post('article/select',{user:UID})
 			.then(function successCallback(res){
-				var arr = [];
 				angular.forEach(res.data,function(item){
-					arr.push({
+					this.push({
 						id : item.id,
 						title : item.title,
 						category : {
@@ -20,12 +21,11 @@
 						},
 						statu : item.statu
 					});
-				});
-				callback(arr);
-				console.log(arr);
+				},articles);
 			},function errorCallback(res){
 				console.log(res);
 			});
+			return articles;
 		};
 		this.put = function(article){
 			$http.post('article/insert',article)
