@@ -20,7 +20,10 @@ router.post('/insert',function(req,res){
 router.post('/select',function(req,res){
 	user.select({username : req.body.username},function(results){
 		if(results.length == 0){
-			res.end('该用户名不存在！');
+			res.json({
+				status : 0,
+				statusText : '该用户名不存在！'
+			});
 		}else{
 			if(results[0].password == req.body.password){
 				res.json({

@@ -19,7 +19,7 @@
 						alert(res.data.statusText);
 						break;
 					case 1:	
-						window.localStorage.setItem('UID',res.data.UID);
+						window.sessionStorage.setItem('UID',res.data.UID);
 						alert(res.data.statusText);
 						break;
 					default:
