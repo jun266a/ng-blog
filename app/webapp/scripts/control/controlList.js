@@ -5,24 +5,26 @@
 		'module.service.category'
 	]);
 	app.config(['$routeProvider',function($routeProvider){
-			$routeProvider.when('/list',{
+			$routeProvider.when('/list/:status',{
 				controller : 'controlList',
 				templateUrl : './views/viewList.html'
 			});
 	}]);
 	app.controller('controlList',[
 		'$scope',
+		'$location',
 		'serviceArticle',
 		'serviceCategory',
-		function($scope,serviceArticle,serviceCategory){
+		function($scope,$location,serviceArticle,serviceCategory){
+        	$scope.$location = $location;
+        	$scope.$watch("$location.path()",function (now, old) {
+	            $scope.path = now;
+	        })
 			serviceCategory.get(7,function(data){
 				$scope.categories = data;
 				console.log($scope.categories);
 			});
-			serviceArticle.get(7,function(data){
-				$scope.articles = data;
-				console.log($scope.articles);
-			});
+			$scope.articles = serviceArticle.get(7);
 		}
 	]);
 })(angular);
