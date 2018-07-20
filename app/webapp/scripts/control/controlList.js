@@ -1,6 +1,7 @@
 (function(angular){
 	var app = angular.module('module.control.list',[
 		'ngRoute',
+		'ngCookies',
 		'module.service.article',
 		'module.service.category'
 	]);
@@ -13,18 +14,22 @@
 	app.controller('controlList',[
 		'$scope',
 		'$location',
+		'$cookieStore',
 		'serviceArticle',
 		'serviceCategory',
-		function($scope,$location,serviceArticle,serviceCategory){
+		function($scope,$location,$cookieStore,serviceArticle,serviceCategory){
+			$scope.user = $cookieStore.get('user');
         	$scope.$location = $location;
-        	$scope.$watch("$location.path()",function (now, old) {
+        	$scope.$watch('$location.path()',function (now, old) {
 	            $scope.path = now;
-	        })
-			serviceCategory.get(7,function(data){
-				$scope.categories = data;
-				console.log($scope.categories);
-			});
-			$scope.articles = serviceArticle.get(7);
+	        });
+        	if(!$cookieStore.get($scope.user.UID)){
+        		$scope.categories = serviceCategory.get($scope.user.UID);
+        	}else{
+        		$scope.categories = $cookieStore.get($scope.user.UID);
+        	}
+			console.log($scope.categories);
+			$scope.articles = serviceArticle.get($scope.user.UID);
 		}
 	]);
 })(angular);

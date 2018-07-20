@@ -1,6 +1,7 @@
 (function(angular){
 	var app = angular.module('module.control.user',[
 		'ngRoute',
+		'ngCookies',
 		'module.service.user'
 	]);
 	app.config(['$routeProvider',function($routeProvider){
@@ -12,9 +13,15 @@
 	app.controller('controlUser',[
 		'$scope',
 		'$routeParams',
+		'$location',
+		'$cookieStore',
 		'serviceUser',
-		function($scope,$routeParams,serviceUser){
+		function($scope,$routeParams,$location,$cookieStore,serviceUser){
 			$scope.status = $routeParams.status;
+			$scope.user = $cookieStore.get('user');
+			if($scope.user){
+				$location.path('/user/profile');
+			}
 			$scope.signin = function(user){
 				serviceUser.get(user);
 			};

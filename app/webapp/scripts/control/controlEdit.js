@@ -1,6 +1,7 @@
 (function(angular){
 	var app = angular.module('module.control.edit',[
 		'ngRoute',
+		'ngCookies',
 		'module.service.article',
 		'module.service.category'
 	]);
@@ -12,18 +13,16 @@
 	}]);
 	app.controller('controlEdit',[
 		'$scope',
+		'$cookieStore',
 		'serviceArticle',
 		'serviceCategory',
-		function($scope,serviceArticle,serviceCategory){
-			$scope.$on('UID',function(e,m){
-				//未完成
-				$scope.UID = m;
-			});
+		function($scope,$cookieStore,serviceArticle,serviceCategory){
+			$scope.user = $cookieStore.get('user');
 			serviceCategory.all(function(data){
 				$scope.categories = data;
 			});
 			$scope.save = function(article){
-				article.user = $scope.UID;
+				article.user = $scope.user.UID;
 				article.date = new Date().toLocaleDateString();
 				article.statu = 0;
 				console.log(article);

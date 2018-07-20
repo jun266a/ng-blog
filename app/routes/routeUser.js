@@ -27,7 +27,10 @@ router.post('/select',function(req,res){
 		}else{
 			if(results[0].password == req.body.password){
 				res.json({
-					UID : results[0].id,
+					user : { 
+						UID : results[0].id,
+						name : results[0].username
+					},
 					status : 1,
 					statusText : '登录成功'
 				});

@@ -1,6 +1,6 @@
 (function(angular){
-	var app = angular.module('module.service.user',[]);
-	app.service('serviceUser',['$http',function($http){
+	var app = angular.module('module.service.user',['ngCookies']);
+	app.service('serviceUser',['$http','$location','$cookieStore',function($http,$location,$cookieStore){
 		this.put = function(user){
 			$http.post('user/insert',user)
 			.then(function successCallback(res){
@@ -19,8 +19,9 @@
 						alert(res.data.statusText);
 						break;
 					case 1:	
-						window.sessionStorage.setItem('UID',res.data.UID);
+						$cookieStore.put('user',res.data.user);
 						alert(res.data.statusText);
+						$location.path('/user/profile');
 						break;
 					default:
 						break;
