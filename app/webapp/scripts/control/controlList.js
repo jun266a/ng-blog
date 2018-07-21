@@ -28,7 +28,6 @@
         	}else{
         		$scope.categories = $cookieStore.get($scope.user.UID);
         	}
-			console.log($scope.categories);
 			$scope.articles = serviceArticle.get($scope.user.UID);
 		}
 	]);

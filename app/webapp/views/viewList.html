@@ -5,25 +5,43 @@
   	<!-- Nav tabs -->
   	<ul class="nav nav-tabs col-sm-11" role="tablist">
 	  	<li ng-class="{active:path.startsWith('/list/all')}" ng-click=""><a ng-href="#/list/all">全部 </a></li>
-	  	<li ng-class="{active:path.startsWith('/list/{{item.category}}')}" ng-repeat="item in categories"><a ng-href="#/list/{{item.category}}">{{item.name}}</a> </li>
+	  	<!--<li ng-class="{active:path.startsWith('/list/{{item.category}}')}" ng-repeat="item in categories"><a ng-href="#/list/{{item.category}}">{{item.name}}</a> </li>-->
 	  	<li ng-class="{active:path.startsWith('/list/draft')}"><a ng-href="#/list/draft">草稿箱 </a></li>
 	  	<li ng-class="{active:path.startsWith('/list/deleted')}"><a ng-href="#/list/deleted">回收站 </a></li>
 	</ul>
   	<!-- Tab panes -->
 	<div ng-switch="category" class="tab-content ">
 		<div ng-switch-default role="tabpanel " class="tab-pane active" >
-	    	<ul class="list-group col-sm-11">
-	    		<a ng-href="#/article/{{item.id}}" class="list-group-item" ng-repeat="item in articles" >
-				    <h3 class="list-group-item-heading">{{item.title}}</h3>
-				    <blockquote >
-					    <p class="list-group-item-text">
-					    	<span class="label label-primary"><span class="glyphicon glyphicon-tag"></span>{{item.category.name}}</span>
-					    	<span class="label label-warning"><span class="glyphicon glyphicon-user"></span>{{item.user.name}}</span>
-					    	<span class="label label-danger"><span class="glyphicon glyphicon-time"></span>{{item.date}}</span>
-					    </p>
-				  	</blockquote>
-				</a>
-			</ul>
+	    	<div class="panel panel-default col-sm-12">
+			  	<!-- Default panel contents -->
+			  	<div class="panel-body">
+			    	<form class="form-inline" ng-submit="selector = article">
+					  	<div class="form-group">
+					    	<label >标题</label>
+					    	<input type="text" class="form-control"  ng-model="article.title" placeholder="标题">
+					  	</div>
+					  	<div class="form-group">
+					    	<label >分类</label>
+					    	<select class="form-control" ng-model="article.category.name" 
+									ng-options="item.name as item.name for item in categories" required>
+							</select>
+					  	</div>
+					  	<button type="submmit" class="btn btn-default">搜索</button>
+					</form>
+			  	</div>
+		    	<ul class="list-group ">
+		    		<a ng-href="#/article/{{item.id}}" class="list-group-item" ng-repeat="item in articles | filter : selector" >
+					    <h3 class="list-group-item-heading">{{item.title}}</h3>
+					    <blockquote >
+						    <p class="list-group-item-text">
+						    	<span class="label label-primary"><span class="glyphicon glyphicon-tag"></span>{{item.category.name}}</span>
+						    	<span class="label label-warning"><span class="glyphicon glyphicon-user"></span>{{item.user.name}}</span>
+						    	<span class="label label-danger"><span class="glyphicon glyphicon-time"></span>{{item.date}}</span>
+						    </p>
+					  	</blockquote>
+					</a>
+				</ul>
+			</div>
 		</div>
 		<div ng-switch-when="draft">
 			
