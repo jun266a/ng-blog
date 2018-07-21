@@ -34,35 +34,81 @@
 			</form>	
 		</div>
 		<div class="signup" ng-switch-when="register">
-		<form class="form-horizontal" ng-submit="signup(user,confirm)">
-			<div class="col-sm-11">
-				<div class="form-group">
-				    <label for="name" class="col-sm-2 control-label">账号</label>
-					<div class="col-sm-8">
-						<input type="text" class="form-control" placeholder="账号" ng-model="user.username" required>
+			<form class="form-horizontal" ng-submit="signup(user,confirm)">
+				<div class="col-sm-11">
+					<div class="form-group">
+					    <label for="name" class="col-sm-2 control-label">账号</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" placeholder="账号" ng-model="user.username" required>
+						</div>
+					</div>
+				  	<div class="form-group">
+					    <label for="password" class="col-sm-2 control-label">密码</label>
+				  		<div class="col-sm-8">
+						    <input type="password" class="form-control" placeholder="密码" ng-model="user.password" required>
+				  		</div>
+				  	</div>
+				  	<div class="form-group">
+					    <label for="password" class="col-sm-2 control-label">确认密码</label>
+				  		<div class="col-sm-8">
+						    <input type="password" class="form-control" placeholder="确认密码" ng-model="confirm.password" required>
+				  		</div>
+				  	</div>
+				  	<div class="form-group">
+				  		<div class="col-sm-offset-2 col-sm-8">
+							<input type="submit" class="btn btn-info" value="注册并登录" />
+							<input type="reset" class="btn btn-success" value="重置"/>
+							<a href="#/user/login" type="button" class="btn btn-warning" >已有账号,直接登录</a>
+				  		</div>
+				  	</div>
+				</div>
+			</form>	
+		</div>
+		<div class="profile" ng-switch-when="profile" >
+			<input type="button" class="btn btn-default" value="修改密码" ng-click="invoke()"/>
+		</div>
+	</div>
+	<div class="modal in" ng-class="{block:modal}">
+	    <div class="modal-dialog" role="document">
+	        <div class="modal-content">
+				<div class="modal-header">
+			    	<button type="button" class="close" ng-click="dismiss()"><span >&times;</span></button>
+			    	<h4 class="modal-title">修改密码</h4>
+			  	</div>
+			  	<div class="modal-body">
+					<form class="form-horizontal" id="changepwd" ng-submit="">
+				      	<div class="form-group">
+						    <label for="name" class="col-sm-3 control-label">旧密码</label>
+							<div class="col-sm-8">
+								<input type="password" class="form-control" placeholder="旧密码" ng-model="user.username" required>
+							</div>
+						</div>
+				      	<div class="form-group">
+						    <label for="password" class="col-sm-3 control-label">新密码</label>
+					  		<div class="col-sm-8">
+							    <input type="password" class="form-control" placeholder="新密码" ng-model="user.password" required>
+					  		</div>
+					  	</div>
+					  	<div class="form-group">
+						    <label for="password" class="col-sm-3 control-label">确认密码</label>
+					  		<div class="col-sm-8">
+							    <input type="password" class="form-control" placeholder="确认密码" ng-model="confirm.password" required>
+					  		</div>
+					  	</div>
+				    </form>
+				</div>
+				<div class="modal-footer">
+					<div class="row form-group">
+						<div class="col-sm-offset-2 col-sm-9">
+							<input type="submit" class="btn btn-info" value="确认修改" form="changepwd"/>
+							<input type="reset" class="btn btn-success" value="重置" form="changepwd"/>
+							<input type="button" class="btn btn-danger" value="忘记密码"/>
+							<input type="button" class="btn btn-default" value="取消" ng-click="dismiss()"/>
+						</div>
 					</div>
 				</div>
-			  	<div class="form-group">
-				    <label for="password" class="col-sm-2 control-label">密码</label>
-			  		<div class="col-sm-8">
-					    <input type="password" class="form-control" placeholder="密码" ng-model="user.password" required>
-			  		</div>
-			  	</div>
-			  	<div class="form-group">
-				    <label for="password" class="col-sm-2 control-label">确认密码</label>
-			  		<div class="col-sm-8">
-					    <input type="password" class="form-control" placeholder="密码" ng-model="confirm.password" required>
-			  		</div>
-			  	</div>
-			  	<div class="form-group">
-			  		<div class="col-sm-offset-2 col-sm-8">
-						<input type="submit" class="btn btn-info" value="注册并登录" />
-						<input type="reset" class="btn btn-success" value="重置"/>
-						<a href="#/user/login" type="button" class="btn btn-warning" >已有账号,直接登录</a>
-			  		</div>
-			  	</div>
-			</div>
-		</form>	
+		    </div>
+	    </div>
 	</div>
-		<div ng-switch-when="profile" ></div>
-	</div>
+	<div class="modal-backdrop in" ng-show="modal"></div>
+	

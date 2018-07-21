@@ -27,6 +27,7 @@
 			};
 			$scope.signup = function(user,confirm){
 				if(user&&confirm){
+					//angular.equals();
 					if(confirm.password == user.password){
 						serviceUser.put(user);
 						$scope.status = 'login';
@@ -34,6 +35,12 @@
 						alert(confirm.password+'请确认密码'+user.password);
 					}
 				}
+			};
+			$scope.invoke = function(){
+				$scope.modal = true;
+			};
+			$scope.dismiss = function(){
+				$scope.modal = false;
 			};
 		}
 	]);
