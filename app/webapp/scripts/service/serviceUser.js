@@ -11,25 +11,41 @@
 				alert(res.data);
 			});
 		};
-		this.get = function(user){
+		this.get = function(user,callback){
 			$http.post('user/select',user)
 			.then(function successCallback(res){
 				switch (res.data.status){
-					case 0:	
-						alert(res.data.statusText);
-						break;
 					case 1:	
 						$cookieStore.put('user',res.data.user);
-						alert(res.data.statusText);
-						$location.path('/user/profile');
 						break;
 					default:
 						break;
 				}
+				callback({
+					statu : res.data.status,
+					text : res.data.statusText
+				});
 			},function errorCallback(res){
 				console.log(res.data);
 				alert(res.data);
 			});
+		};
+		this.removeUser = function(){
+			$cookieStore.remove('user');
+		}
+		this.replace = function(user){
+			console.log(user);
+			$http.post('user/replace',user)
+			.then(function successCallback(res){
+				console.log(res.data);
+				alert(res.data.statusText);
+			},function errorCallback(res){
+				console.log(res.data);
+				alert(res.data);
+			});
+		};
+		this.getUser = function(){
+			return $cookieStore.get('user');
 		};
 	}]);
 })(angular);

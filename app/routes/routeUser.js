@@ -18,6 +18,7 @@ router.post('/insert',function(req,res){
 	});
 });
 router.post('/select',function(req,res){
+	console.log(req.body);
 	user.select({username : req.body.username},function(results){
 		if(results.length == 0){
 			res.json({
@@ -32,20 +33,32 @@ router.post('/select',function(req,res){
 						name : results[0].username
 					},
 					status : 1,
-					statusText : '登录成功'
+					statusText : '登录成功!'
 				});
 			}else{
 				res.json({
 					status : 0,
-					statusText : '密码或者账号错误！'
+					statusText : '密码错误！'
 				});
 			}
 		}
 	});
 });
 router.post('/replace',function(req,res){
-	user.replace(req.body,function(results){
-		res.json(results);
+	console.log(req.body);
+	//replace 不适用
+	user.update(req.body,function(results){
+		if(results.length == 0){
+			res.json({
+				status : 0,
+				statusText : '修改密码失败！'
+			});
+		}else{
+			res.json({
+				status : 1,
+				statusText : '修改密码成功！'
+			});
+		}
 	});
 });
 

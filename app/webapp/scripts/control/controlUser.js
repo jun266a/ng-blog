@@ -14,26 +14,50 @@
 		'$scope',
 		'$routeParams',
 		'$location',
-		'$cookieStore',
 		'serviceUser',
-		function($scope,$routeParams,$location,$cookieStore,serviceUser){
+		function($scope,$routeParams,$location,serviceUser){
 			$scope.status = $routeParams.status;
-			$scope.user = $cookieStore.get('user');
+			$scope.user = serviceUser.getUser();
 			if($scope.user){
 				$location.path('/user/profile');
 			}
 			$scope.signin = function(user){
-				serviceUser.get(user);
+				serviceUser.get(user,function(status){
+					alert(status.text);
+				});
+				$location.path('/user/profile');
+				$scope.user = serviceUser.getUser();//待解决
 			};
 			$scope.signup = function(user,confirm){
 				if(user&&confirm){
-					//angular.equals();
-					if(confirm.password == user.password){
+					if(angular.equals(confirm.password,user.password)){
 						serviceUser.put(user);
 						$scope.status = 'login';
 					}else{
 						alert(confirm.password+'请确认密码'+user.password);
 					}
+				}
+			};
+			$scope.signout = function(){
+				serviceUser.removeUser();
+			};
+			$scope.replace = function(params){
+				console.log($scope.user);
+				if(angular.equals(params.confirm,params.now)){
+					serviceUser.get({
+						username : $scope.user.name,
+						password : params.old
+					},function(status){
+						if(status.statu != 0){
+							serviceUser.replace({
+								id : $scope.user.UID,
+								username : $scope.user.name,
+								password : params.now
+							})
+						}else{
+							alert(status.text);//'密码错误！'
+						}
+					});
 				}
 			};
 			$scope.invoke = function(){
