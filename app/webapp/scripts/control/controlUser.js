@@ -2,6 +2,7 @@
 	var app = angular.module('module.control.user',[
 		'ngRoute',
 		'ngCookies',
+		'ngAnimate',
 		'module.service.user'
 	]);
 	app.config(['$routeProvider',function($routeProvider){

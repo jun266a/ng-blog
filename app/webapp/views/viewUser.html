@@ -69,7 +69,7 @@
 			<input type="button" class="btn btn-default" value="注销登录" ng-click="signout()"/>
 		</div>
 	</div>
-	<div class="modal in" ng-class="{block:modal}">
+	<div class="modal in block ng-hide ng-cloak" ng-show="modal">
 	    <div class="modal-dialog" role="document">
 	        <div class="modal-content">
 				<div class="modal-header">
@@ -111,5 +111,5 @@
 		    </div>
 	    </div>
 	</div>
-	<div class="modal-backdrop in" ng-show="modal"></div>
+	<div class="modal-backdrop in ng-hide ng-cloak " ng-show="modal"></div>
 	
