@@ -33,6 +33,12 @@
 		this.removeUser = function(){
 			$cookieStore.remove('user');
 		}
+		this.getUser = function(){
+			return $cookieStore.get('user');
+		};
+		this.updateUser = function(obj){
+			$cookieStore.put('user',Object.assign({},this.getUser(),obj));
+		};
 		this.replace = function(user){
 			console.log(user);
 			$http.post('user/replace',user)
@@ -43,9 +49,6 @@
 				console.log(res.data);
 				alert(res.data);
 			});
-		};
-		this.getUser = function(){
-			return $cookieStore.get('user');
 		};
 	}]);
 })(angular);

@@ -14,20 +14,24 @@
 	app.controller('controlList',[
 		'$scope',
 		'$location',
-		'$cookieStore',
+		'serviceUser',
 		'serviceArticle',
 		'serviceCategory',
-		function($scope,$location,$cookieStore,serviceArticle,serviceCategory){
-			$scope.user = $cookieStore.get('user');
+		function($scope,$location,serviceUser,serviceArticle,serviceCategory){
+			$scope.user = serviceUser.getUser();
         	$scope.$location = $location;
         	$scope.$watch('$location.path()',function (now, old) {
 	            $scope.path = now;
 	        });
-        	if(!$cookieStore.get($scope.user.UID)){
-        		$scope.categories = serviceCategory.get($scope.user.UID);
-        	}else{
-        		$scope.categories = $cookieStore.get($scope.user.UID);
-        	}
+	        //检查用户的分类user.categories，
+	        if(angular.isUndefined($scope.user.categories)){
+	        	//没有就去请求
+	        	serviceCategory.get($scope.user.UID,function(results){
+	        		//将请求到的分类数据更新到用户数据上
+	        		serviceUser.updateUser(results);
+	        	});
+	        }
+	        $scope.categories = $scope.user.categories;
 			$scope.articles = serviceArticle.get($scope.user.UID);
 		}
 	]);

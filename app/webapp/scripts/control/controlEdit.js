@@ -13,11 +13,12 @@
 	}]);
 	app.controller('controlEdit',[
 		'$scope',
-		'$cookieStore',
+		'serviceUser',
 		'serviceArticle',
 		'serviceCategory',
-		function($scope,$cookieStore,serviceArticle,serviceCategory){
-			$scope.user = $cookieStore.get('user');
+		function($scope,serviceUser,serviceArticle,serviceCategory){
+			$scope.user = serviceUser.getUser();
+			console.log($scope.user );
 			serviceCategory.all(function(data){
 				$scope.categories = data;
 			});
@@ -26,7 +27,7 @@
 				article.date = new Date().toLocaleDateString();
 				article.statu = 0;
 				console.log(article);
-//				serviceArticle.put(article);
+				serviceArticle.put(article);
 			}
 		}
 	]);

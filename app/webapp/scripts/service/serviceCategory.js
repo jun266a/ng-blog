@@ -12,7 +12,14 @@
 		this.get = function(UID,callback){
 			$http.post('category/select',{user:UID})
 			.then(function successCallback(res){
-				$cookieStore.put(UID,res.data);
+				var categories = [];
+				angular.forEach(res.data,function(item){
+					this.push({
+						category : item.category,
+						name : item.name
+					});
+				},categories);
+				callback({categories});
 			},function errorCallback(res){
 				console.log(res);
 			});
