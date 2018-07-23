@@ -42,19 +42,17 @@
 			$scope.signout = function(){
 				serviceUser.removeUser();
 			};
-			$scope.replace = function(params){
-				console.log($scope.user);
+			$scope.changepwd = function(params){
 				if(angular.equals(params.confirm,params.now)){
 					serviceUser.get({
 						username : $scope.user.name,
 						password : params.old
 					},function(status){
 						if(status.statu != 0){
-							serviceUser.replace({
-								id : $scope.user.UID,
-								username : $scope.user.name,
-								password : params.now
-							})
+							serviceUser.update([
+								{password : params.now},
+								{id : $scope.user.UID}
+							])
 						}else{
 							alert(status.text);//'密码错误！'
 						}

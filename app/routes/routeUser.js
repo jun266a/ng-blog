@@ -44,9 +44,8 @@ router.post('/select',function(req,res){
 		}
 	});
 });
-router.post('/replace',function(req,res){
+router.post('/update',function(req,res){
 	console.log(req.body);
-	//replace 不适用
 	user.update(req.body,function(results){
 		if(results.length == 0){
 			res.json({

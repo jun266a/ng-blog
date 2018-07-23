@@ -39,9 +39,9 @@
 		this.updateUser = function(obj){
 			$cookieStore.put('user',Object.assign({},this.getUser(),obj));
 		};
-		this.replace = function(user){
+		this.update = function(user){
 			console.log(user);
-			$http.post('user/replace',user)
+			$http.post('user/update',user)
 			.then(function successCallback(res){
 				console.log(res.data);
 				alert(res.data.statusText);
