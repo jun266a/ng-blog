@@ -36,13 +36,13 @@
 	        $scope.categories = $scope.user.categories;
 	        switch ($scope.status){
 	        	case 'all':
-					$scope.articles = serviceArticle.get([{user :$scope.user.UID},{statu : 1}]);
+					$scope.articles = serviceArticle.getArticles([{user :$scope.user.UID},{statu : 1}]);
 	        		break;
 	        	case 'draft':
-					$scope.articles = serviceArticle.get([{user :$scope.user.UID},{statu : 0}]);
+					$scope.articles = serviceArticle.getArticles([{user :$scope.user.UID},{statu : 0}]);
 	        		break;
 	        	case 'deleted':
-					$scope.articles = serviceArticle.get([{user :$scope.user.UID},{statu : -1}]);
+					$scope.articles = serviceArticle.getArticles([{user :$scope.user.UID},{statu : -1}]);
 	        		break;
 	        	default:
 	        		break;

@@ -2,9 +2,9 @@
 	var app = angular.module('module.service.article',[]);
 	app.service('serviceArticle',['$http',function($http){
 		var articles = [];
-		this.get = function(select){
+		this.getArticles = function(select){
 			articles = [];
-			$http.post('article/select',select)
+			$http.post('article/all',select)
 			.then(function successCallback(res){
 				angular.forEach(res.data,function(item){
 					this.push({
@@ -26,6 +26,14 @@
 				console.log(res);
 			});
 			return articles;
+		};
+		this.get = function(id,callback){
+			$http.post('article/select',{id})
+			.then(function successCallback(res){
+				callback(res.data);
+			},function errorCallback(res){
+				console.log(res);
+			})
 		};
 		this.put = function(article){
 			$http.post('article/insert',article)
