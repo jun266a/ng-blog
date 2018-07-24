@@ -4,7 +4,8 @@
 		'ngCookies',
 		'module.control.list',
 		'module.control.edit',
-		'module.control.user'
+		'module.control.user',
+		'module.control.article'
 	]);
 	app.config(['$routeProvider',function($routeProvider){
 		$routeProvider
