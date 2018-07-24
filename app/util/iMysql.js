@@ -17,6 +17,7 @@ let iMysql = {
 		ARTICLE : 'article',
 		CATEGORY : 'category',
 		USER : 'user',
+		COMMENT : 'comment'
 	},
 	query : function sqlback(querySql,values,callback){
 		//2.获取和数据库的链接

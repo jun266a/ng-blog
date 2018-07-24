@@ -26,7 +26,6 @@ let baseDao = {
 		this.query(selectSql,null,callback);
 	},
 	update : function(values,callback){
-		//TODO update的偏差错误//事务
 		let updateSql = 'UPDATE ' + this.TABLE +' SET ? WHERE ?';
 		this.query(updateSql,values,callback);
 	}
