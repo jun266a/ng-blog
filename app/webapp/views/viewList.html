@@ -5,13 +5,12 @@
   	<!-- Nav tabs -->
   	<ul class="nav nav-tabs col-sm-11" role="tablist">
 	  	<li ng-class="{active:path.startsWith('/list/all')}" ng-click=""><a ng-href="#/list/all">全部 </a></li>
-	  	<!--<li ng-class="{active:path.startsWith('/list/{{item.category}}')}" ng-repeat="item in categories"><a ng-href="#/list/{{item.category}}">{{item.name}}</a> </li>-->
 	  	<li ng-class="{active:path.startsWith('/list/draft')}"><a ng-href="#/list/draft">草稿箱 </a></li>
 	  	<li ng-class="{active:path.startsWith('/list/deleted')}"><a ng-href="#/list/deleted">回收站 </a></li>
 	</ul>
   	<!-- Tab panes -->
-	<div ng-switch="category" class="tab-content ">
-		<div ng-switch-default role="tabpanel " class="tab-pane active" >
+	<div class="tab-content ">
+		<div role="tabpanel " class="tab-pane active" >
 	    	<div class="panel panel-default col-sm-12">
 			  	<!-- Default panel contents -->
 			  	<div class="panel-body">
@@ -42,12 +41,6 @@
 					</a>
 				</ul>
 			</div>
-		</div>
-		<div ng-switch-when="draft">
-			
-		</div>
-		<div ng-switch-when="deleted">
-			
 		</div>
 	</div>
 </div>

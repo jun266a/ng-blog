@@ -14,12 +14,14 @@
 	app.controller('controlList',[
 		'$scope',
 		'$location',
+		'$routeParams',
 		'serviceUser',
 		'serviceArticle',
 		'serviceCategory',
-		function($scope,$location,serviceUser,serviceArticle,serviceCategory){
+		function($scope,$location,$routeParams,serviceUser,serviceArticle,serviceCategory){
 			$scope.user = serviceUser.getUser();
         	$scope.$location = $location;
+        	$scope.status = $routeParams.status;
         	$scope.$watch('$location.path()',function (now, old) {
 	            $scope.path = now;
 	        });
@@ -32,7 +34,20 @@
 	        	});
 	        }
 	        $scope.categories = $scope.user.categories;
-			$scope.articles = serviceArticle.get($scope.user.UID);
+	        switch ($scope.status){
+	        	case 'all':
+					$scope.articles = serviceArticle.get([{user :$scope.user.UID},{statu : 1}]);
+	        		break;
+	        	case 'draft':
+					$scope.articles = serviceArticle.get([{user :$scope.user.UID},{statu : 0}]);
+	        		break;
+	        	case 'deleted':
+					$scope.articles = serviceArticle.get([{user :$scope.user.UID},{statu : -1}]);
+	        		break;
+	        	default:
+	        		break;
+	        }
+
 		}
 	]);
 })(angular);

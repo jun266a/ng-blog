@@ -18,7 +18,7 @@ router.post('/insert',function(req,res){
 });
 router.post('/select',function(req,res){
 	console.log(req.body);
-	artiView.select(req.body,function(results){
+	artiView.query('SELECT * FROM articleView WHERE ? AND ?',req.body,function(results){
 		res.json(results);
 	});
 });

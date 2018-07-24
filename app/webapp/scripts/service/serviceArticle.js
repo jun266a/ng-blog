@@ -2,9 +2,9 @@
 	var app = angular.module('module.service.article',[]);
 	app.service('serviceArticle',['$http',function($http){
 		var articles = [];
-		this.get = function(UID){
+		this.get = function(select){
 			articles = [];
-			$http.post('article/select',{user:UID})
+			$http.post('article/select',select)
 			.then(function successCallback(res){
 				angular.forEach(res.data,function(item){
 					this.push({
