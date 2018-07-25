@@ -5,7 +5,6 @@
 			$http.post('comment/all',{article})
 			.then(function successCallback(res){
 				callback(res.data);
-				console.log(res.data);
 			},function errorCallback(res){
 				console.log(res.data);
 			});
@@ -18,8 +17,8 @@
 				console.log(res.data);
 			});
 		};
-		this.update = function(comment,count){
-			$http.post('comment/update',[{count},{id : comment}])
+		this.update = function(comment,vote){
+			$http.post('comment/update',[{vote},{id : comment}])
 			.then(function successCallback(res){
 				console.log(res.data);
 			},function errorCallback(res){

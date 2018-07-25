@@ -7,10 +7,11 @@
 	<div class="col-sm-offset-1">
 		<form class="form-inline" ng-submit="commit(comment)" name="forma" novalidate>
 			<div class="form-group">
-				<button class="btn btn-primary btn-xs" 
+				<button class="btn  btn-xs" 
+					ng-class="color(item.vote)"
 					type="button" ng-repeat="item in comments"
-					ng-click="append(item.id,item.count)">
-				  	{{item.comment}} <span class="badge">{{item.count}}</span>
+					ng-click="vote(item.id,item.vote)">
+				  	{{item.comment}} <span class="badge">{{item.vote}}</span>
 				</button>
 			</div>
 		  	<div class="form-group">
