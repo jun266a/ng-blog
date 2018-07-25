@@ -2,14 +2,14 @@
 	var app = angular.module('module.index',[
 		'ngRoute',
 		'ngCookies',
-		'module.control.list',
+		'module.control.post',
 		'module.control.edit',
 		'module.control.user',
 		'module.control.article'
 	]);
 	app.config(['$routeProvider',function($routeProvider){
 		$routeProvider
-		.otherwise({redirectTo : '/user/login'});
+		.otherwise({redirectTo : '/user/profile/login'});
 	}]);
 	app.run([
 		'$rootScope',
@@ -21,10 +21,10 @@
 				//检查登录标记，过滤所有路径
 				var USER = $cookieStore.get('user');
 				//登录或者注册页面不过滤
-				var PATH = $location.path().startsWith('/user');
+				var PATH = $location.path().startsWith('/user/profile');
 				if(!PATH&&!USER){
 					//强制跳转到登录或者注册页面
-					$location.path('/user/login')
+					$location.path('/user/profile/login')
 				}else{
 					//广播
 					//$rootScope.$broadcast('UIDE', UID);

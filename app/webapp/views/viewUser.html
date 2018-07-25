@@ -27,7 +27,7 @@
 							<input type="submit" class="btn btn-info" value="登录" />
 							<input type="reset" class="btn btn-success" value="重置"/>
 							<input type="button" class="btn btn-danger" value="忘记密码"/>
-							<a href="#/user/register" type="button" class="btn btn-warning" >注册用户</a>
+							<a href="#/user/profile/register" type="button" class="btn btn-warning" >注册用户</a>
 				  		</div>
 				  	</div>
 				</div>
@@ -58,13 +58,13 @@
 				  		<div class="col-sm-offset-2 col-sm-8">
 							<input type="submit" class="btn btn-info" value="注册并登录" />
 							<input type="reset" class="btn btn-success" value="重置"/>
-							<a href="#/user/login" type="button" class="btn btn-warning" >已有账号,直接登录</a>
+							<a href="#/user/profile/login" type="button" class="btn btn-warning" >已有账号,直接登录</a>
 				  		</div>
 				  	</div>
 				</div>
 			</form>	
 		</div>
-		<div class="profile" ng-switch-when="profile" >
+		<div class="profile" ng-switch-when="home" >
 			<input type="button" class="btn btn-default" value="修改密码" ng-click="invoke()"/>
 			<input type="button" class="btn btn-default" value="注销登录" ng-click="signout()"/>
 		</div>

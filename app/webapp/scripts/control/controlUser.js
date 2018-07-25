@@ -6,7 +6,7 @@
 		'module.service.user'
 	]);
 	app.config(['$routeProvider',function($routeProvider){
-			$routeProvider.when('/user/:status',{
+			$routeProvider.when('/user/profile/:status',{
 			controller : 'controlUser',
 			templateUrl : 'views/viewUser.html'
 		})
@@ -20,13 +20,13 @@
 			$scope.status = $routeParams.status;
 			$scope.user = serviceUser.getUser();
 			if($scope.user){
-				$location.path('/user/profile');
+				$location.path('/user/profile/home');
 			}
 			$scope.signin = function(user){
 				serviceUser.get(user,function(status){
 					alert(status.text);
 				});
-				$location.path('/user/profile');
+				$location.path('/user/profile/home');
 				$scope.user = serviceUser.getUser();//待解决
 			};
 			$scope.signup = function(user,confirm){

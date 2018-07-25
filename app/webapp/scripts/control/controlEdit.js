@@ -6,7 +6,7 @@
 		'module.service.category'
 	]);
 	app.config(['$routeProvider',function($routeProvider){
-			$routeProvider.when('/edit',{
+			$routeProvider.when('/user/edit',{
 			controller : 'controlEdit',
 			templateUrl : './views/viewEdit.html'
 		})

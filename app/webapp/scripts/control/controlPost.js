@@ -1,17 +1,17 @@
 (function(angular){
-	var app = angular.module('module.control.list',[
+	var app = angular.module('module.control.post',[
 		'ngRoute',
 		'ngCookies',
 		'module.service.article',
 		'module.service.category'
 	]);
 	app.config(['$routeProvider',function($routeProvider){
-			$routeProvider.when('/list/:status',{
-				controller : 'controlList',
+			$routeProvider.when('/user/post/:status',{
+				controller : 'controlPost',
 				templateUrl : './views/viewList.html'
 			});
 	}]);
-	app.controller('controlList',[
+	app.controller('controlPost',[
 		'$scope',
 		'$location',
 		'$routeParams',
