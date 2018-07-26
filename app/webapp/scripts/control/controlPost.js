@@ -8,7 +8,7 @@
 	app.config(['$routeProvider',function($routeProvider){
 			$routeProvider.when('/user/post/:status',{
 				controller : 'controlPost',
-				templateUrl : './views/viewList.html'
+				templateUrl : './views/viewPost.html'
 			});
 	}]);
 	app.controller('controlPost',[
@@ -20,11 +20,8 @@
 		'serviceCategory',
 		function($scope,$location,$routeParams,serviceUser,serviceArticle,serviceCategory){
 			$scope.user = serviceUser.getUser();
-        	$scope.$location = $location;
         	$scope.status = $routeParams.status;
-        	$scope.$watch('$location.path()',function (now, old) {
-	            $scope.path = now;
-	        });
+        	//将监听路由状态部分迁移到index.js，由根域监听
 	        //检查用户的分类user.categories，
 	        if(angular.isUndefined($scope.user.categories)){
 	        	//没有就去请求

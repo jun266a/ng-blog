@@ -21,14 +21,16 @@
 				//检查登录标记，过滤所有路径
 				var USER = $cookieStore.get('user');
 				//登录或者注册页面不过滤
-				var PATH = $location.path().startsWith('/user/profile');
-				if(!PATH&&!USER){
+				var PATH = $location.path().startsWith('/user');
+				if(PATH&&!USER){
 					//强制跳转到登录或者注册页面
 					$location.path('/user/profile/login')
-				}else{
-					//广播
-					//$rootScope.$broadcast('UIDE', UID);
 				}
+				$rootScope.$location = $location;
+				//规避数据绑定的方法
+				$rootScope.$watch('$location.path()',function (now, old) {
+		            $rootScope.path = now;
+		        });
 			});
 		}
 	]);
