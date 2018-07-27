@@ -2,6 +2,7 @@
 	var app = angular.module('module.index',[
 		'ngRoute',
 		'ngCookies',
+		'module.control.list',
 		'module.control.post',
 		'module.control.edit',
 		'module.control.user',

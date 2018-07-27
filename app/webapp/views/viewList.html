@@ -1,0 +1,36 @@
+<div class="page-header ">
+	<blockquote>博客列表</blockquote>
+</div>
+<div class="row col-sm-offset-1	">
+  	<!-- Tab panes -->
+	<div class="tab-content ">
+		<div role="tabpanel " class="tab-pane active" >
+	    	<div class="panel panel-default col-sm-12">
+			  	<!-- Default panel contents -->
+			  	<div class="panel-body">
+			    	<form class="form-inline" ng-submit="selector = article">
+					  	<div class="form-group">
+					    	<label >标题</label>
+					    	<input type="text" class="form-control"  ng-model="article.title" placeholder="标题">
+					  	</div>
+					  	<button type="submmit" class="btn btn-default">搜索</button>
+					</form>
+			  	</div>
+		    	<ul class="list-group ">
+		    		<a ng-href="#/article/{{item.id}}" class="list-group-item" ng-repeat="item in articles | filter : selector" >
+					    <h3 class="list-group-item-heading">{{item.title}}</h3>
+					    <blockquote >
+						    <p class="list-group-item-text">
+						    	<span class="label label-primary"><span class="glyphicon glyphicon-tag"></span>{{item.category.name}}</span>
+						    	<span class="label label-warning"><span class="glyphicon glyphicon-user"></span>{{item.user.name}}</span>
+						    	<span class="label label-danger"><span class="glyphicon glyphicon-time"></span>{{item.date}}</span>
+						    </p>
+					  	</blockquote>
+					</a>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
