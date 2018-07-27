@@ -1,7 +1,7 @@
 <div class="page-header ">
 	<blockquote>写博客</blockquote>
 </div>
-<form class="form-horizontal" ng-submit="save(article)">
+<form class="form-horizontal" >
 	<div class="col-sm-11">
 		<div class="form-group">
 		    <label  class="col-sm-2 control-label">分类</label>
@@ -27,7 +27,8 @@
 		</div>
 		<div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
-		      	<input type="submit" class="btn btn-default" value="保存" />
+		      	<input type="button" class="btn btn-default" value="保存" ng-click="save(article)"/>
+		      	<input type="button" class="btn btn-default" value="发表" ng-click="post(article)"/>
 		    </div>
 	  	</div>
 	</div>

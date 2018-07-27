@@ -52,5 +52,22 @@
 				console.log(res);
 			});
 		};
+		this.update = function(){
+			$http.post('article/update',article)
+			.then(function successCallback(res){
+				switch (res.data.status){
+					case 0:	
+						alert(res.data.statusText);
+						break;
+					case 1:	
+						alert(res.data.statusText);
+						break;
+					default:
+						break;
+				}
+			},function errorCallback(res){
+				console.log(res);
+			});
+		};
 	}]);
 })(angular);
