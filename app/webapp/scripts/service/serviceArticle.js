@@ -11,8 +11,9 @@
 						id : item.id,
 						title : item.title,
 						category : {
-							cate : item.category,
-							name : item.name
+							id : item.category,
+							name : item.categoryname,
+							text : item.categorytext
 						},
 						date : item.date,
 						user : {
@@ -28,9 +29,28 @@
 			return articles;
 		};
 		this.get = function(id,callback){
+			articles = [];
 			$http.post('article/select',{id})
 			.then(function successCallback(res){
-				callback(res.data);
+				angular.forEach(res.data,function(item,index,array){
+					this.push({
+						id : item.id,
+						title : item.title,
+						category : {
+							id : item.category,
+							name : item.categoryname,
+							text : item.categorytext
+						},
+						date : item.date,
+						content : item.content,
+						user : {
+							id : item.user,
+							name : item.username
+						},
+						statu : item.statu
+					});
+				},articles);
+				callback(articles[0]);
 			},function errorCallback(res){
 				console.log(res);
 			})

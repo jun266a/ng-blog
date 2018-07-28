@@ -23,7 +23,7 @@
 				});
 			};
 			serviceArticle.get($routeParams.id,function(data){
-				$scope.article = data[0];
+				$scope.article = data;
 				$scope.all();
 			});
 			$scope.commit = function(comment){

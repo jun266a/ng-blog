@@ -19,12 +19,14 @@
 		function($rootScope,$location,$cookieStore){
 			// 防止FQ
 			$rootScope.$on('$routeChangeStart',function(event,current,pre){
-				//检查登录标记，过滤所有路径
-				var USER = $cookieStore.get('user');
-				//登录或者注册页面不过滤
+				//检查登录标记
+				$rootScope.USER = $cookieStore.get('user');
+				//过滤关于用户的所有路径
 				var PATH = $location.path().startsWith('/user');
-				if(PATH&&!USER){
-					//强制跳转到登录或者注册页面
+				//登录或者注册页面不过滤
+				var PROFILE = $location.path().startsWith('/user/profile');
+				if(PATH&&!$rootScope.USER&&!PROFILE){
+					//强制跳转到登录页面
 					$location.path('/user/profile/login')
 				}
 				$rootScope.$location = $location;
