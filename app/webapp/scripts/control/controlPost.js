@@ -31,6 +31,7 @@
 	        	});
 	        }
 	        $scope.categories = $scope.user.categories;
+	        console.log($scope.categories);
 	        switch ($scope.status){
 	        	case 'all':
 					$scope.articles = serviceArticle.getArticles([{user :$scope.user.UID},{statu : 1}]);

@@ -19,7 +19,7 @@
 		'serviceCategory',
 		function($scope,$location,$routeParams,serviceArticle,serviceCategory){
         	$scope.category = $routeParams.category;
-			$scope.articles = serviceArticle.getArticles([{category : $scope.category},{statu : 1}]);
+			$scope.articles = serviceArticle.getArticles([{categoryname : $scope.category},{statu : 1}]);
 		}
 	]);
 })(angular);

@@ -25,27 +25,17 @@
 			//根据路由参数博客的id值查询数据，填充到博客编辑页面上
 			if(angular.isNumber($scope.$eval($routeParams.article))){
 				serviceArticle.get($routeParams.article,function(data){
-					$scope.article = data[0];
-					console.log($scope.article);
+					$scope.article = data;
+					$scope.article.category = $scope.article.category.id;
 				});
 			}
 			serviceCategory.all(function(data){
 				$scope.categories = data;
 			});
-			$scope.action = function(article){
+			$scope.post = function(article,statu){
 				article.user = $scope.user.UID;
 				article.date = article.date? article.date :new Date().toLocaleDateString();
-				return article;
-			};
-			$scope.save = function(article){
-				article = $scope.action(article);
-				article.statu = 0;
-				console.log(article);
-				serviceArticle.put(article);
-			};
-			$scope.post = function(article){
-				article = $scope.action(article);
-				article.statu = 1;
+				article.statu = statu;
 				serviceArticle.put(article);
 			};
 		}
