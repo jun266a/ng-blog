@@ -5,14 +5,13 @@
 <div ng-show="USER.UID==article.user.id">
 	<nav aria-label="...">
 	  	<ul class="pager">
-	    	<li><a href="#/user/edit/{{article.id}}">编辑</a></li>
-	    	<li><a href="#">删除</a></li>
+	    	<li><a href="#/user/edit/{{article.id}}">博客编辑</a></li>
 	  	</ul>
 	</nav>
 </div>
 <div class="row">
 	<div class="col-sm-offset-1">
-		<form class="form-inline" ng-submit="commit(comment)" name="forma" novalidate>
+		<form class="form-inline" ng-submit="commit(comment)" name="forma" >
 			<div class="form-group">
 				<button class="btn  btn-xs" 
 					ng-class="color(item.vote)"

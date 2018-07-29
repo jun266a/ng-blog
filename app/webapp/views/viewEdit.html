@@ -1,7 +1,7 @@
 <div class="page-header ">
 	<blockquote>写博客</blockquote>
 </div>
-<form class="form-horizontal" >
+<form class="form-horizontal" name="post">
 	<div class="col-sm-11">
 		<div class="form-group">
 		    <label  class="col-sm-2 control-label">分类</label>
@@ -9,26 +9,35 @@
 				<!-- 这里 item.id as item.name for item in categories  
 				我们使用 categories 对象的 id作为select的value，使用categories name 作为 select 的label -->
 				<select class="form-control" ng-model="article.category" 
-						ng-options="item.id as item.text for item in categories" required>
+						ng-options="item.id as item.text for item in categories" 
+						name="category" required>
 				</select>
 			</div>
 		</div>
 		<div class="form-group">
 		    <label  class="col-sm-2 control-label">标题</label>
 			<div class="col-sm-8">
-				<input type="text" class="form-control" placeholder="标题" ng-model="article.title" required>
+				<input type="text" class="form-control" placeholder="标题"
+					ng-model="article.title" name="title" required/>
 			</div>
 		</div>
 		<div class="form-group">
 		    <label  class="col-sm-2 control-label">正文</label>
 			<div class="col-sm-8">
-	    		<textarea class="form-control" rows="9" ng-model="article.content"></textarea>
+	    		<textarea class="form-control" rows="9" ng-model="article.content" name="content" required></textarea>
 			</div>
 		</div>
 		<div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
-		      	<input type="button" class="btn btn-default" value="保存" ng-click="post(article,0)"/>
-		      	<input type="button" class="btn btn-default" value="发表" ng-click="post(article,1)"/>
+		    	<button type="button" class="btn btn-primary" 
+		    		ng-disabled="post.title.$invalid  || post.category.$invalid  || post.content.$invalid"
+		    		ng-click="save(article,1)">发表</button>
+		      	<button type="button" class="btn btn-warning"  
+		      		ng-disabled="post.title.$invalid  || post.category.$invalid  "
+		      		ng-click="save(article,0)">保存</button>
+		      	<button type="button" class="btn btn-danger" 
+		      		ng-disabled="!article.id"
+		      		ng-click="save(article,-1)">删除</button>
 		    </div>
 	  	</div>
 	</div>

@@ -32,11 +32,18 @@
 			serviceCategory.all(function(data){
 				$scope.categories = data;
 			});
-			$scope.post = function(article,statu){
+			$scope.save = function(article,statu){
 				article.user = $scope.user.UID;
 				article.date = article.date? article.date :new Date().toLocaleDateString();
 				article.statu = statu;
-				serviceArticle.put(article);
+				if(article.id){
+					//根据博客的id，区别提交是插入还是更新
+					//当有博客的id时，提交是更新
+					serviceArticle.update(article);
+				}else{
+					//当没有博客的id时，提交是出插入
+					serviceArticle.put(article);
+				}
 			};
 		}
 	]);
