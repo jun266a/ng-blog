@@ -65,7 +65,7 @@
 			</form>	
 		</div>
 		<div class="profile" ng-switch-when="home" >
-			<input type="button" class="btn btn-default" value="修改密码" ng-click="invoke()"/>
+			<input type="button" class="btn btn-default" value="修改密码" ng-click="toast()"/>
 			<input type="button" class="btn btn-default" value="注销登录" ng-click="signout()"/>
 		</div>
 	</div>
@@ -104,7 +104,7 @@
 							<input type="submit" class="btn btn-info" value="确认修改" form="changepwd"/>
 							<input type="reset" class="btn btn-success" value="重置" form="changepwd"/>
 							<input type="button" class="btn btn-danger" value="忘记密码"/>
-							<input type="button" class="btn btn-default" value="取消" ng-click="dismiss()"/>
+							<input type="button" class="btn btn-default" value="取消" ng-click="toast()"/>
 						</div>
 					</div>
 				</div>

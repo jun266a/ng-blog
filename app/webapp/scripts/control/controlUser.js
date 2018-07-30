@@ -25,15 +25,15 @@
 			$scope.signin = function(user){
 				serviceUser.get(user,function(status){
 					alert(status.text);
+					$location.path('/user/profile/home');
 				});
-				$location.path('/user/profile/home');
 				$scope.user = serviceUser.getUser();//待解决
 			};
 			$scope.signup = function(user,confirm){
 				if(user&&confirm){
 					if(angular.equals(confirm.password,user.password)){
 						serviceUser.put(user);
-						$scope.status = 'login';
+						$location.path('/user/profile/login');
 					}else{
 						alert(confirm.password+'请确认密码'+user.password);
 					}
@@ -41,6 +41,8 @@
 			};
 			$scope.signout = function(){
 				serviceUser.removeUser();
+				alert('注销成功！');
+				$location.path('/user/profile');
 			};
 			$scope.changepwd = function(params){
 				if(angular.equals(params.confirm,params.now)){
@@ -59,11 +61,8 @@
 					});
 				}
 			};
-			$scope.invoke = function(){
-				$scope.modal = true;
-			};
-			$scope.dismiss = function(){
-				$scope.modal = false;
+			$scope.toast = function(){
+				$scope.modal = !$scope.modal;
 			};
 		}
 	]);
