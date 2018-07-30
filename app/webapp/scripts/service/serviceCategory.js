@@ -1,6 +1,6 @@
 (function(angular){
-	var app = angular.module('module.service.category',['ngCookies',]);
-	app.service('serviceCategory',['$http','$cookieStore',function($http,$cookieStore){
+	var app = angular.module('module.service.category',[]);
+	app.service('serviceCategory',['$http',function($http){
 		this.all = function(callback){
 			$http.post('category/all',null)
 			.then(function successCallback(res){

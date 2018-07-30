@@ -18,11 +18,11 @@
 		function($scope,$routeParams,serviceArticle,serviceComment){
 			//加载当前博客的所有评论
 			$scope.all = function(){
-				serviceComment.all($scope.article.id,function(data){
+				serviceComment.all({article : $scope.article.id},function(data){
 					$scope.comments = data;
 				});
 			};
-			serviceArticle.get($routeParams.id,function(data){
+			serviceArticle.get({id : $routeParams.id},function(data){
 				$scope.article = data;
 				$scope.all();
 			});

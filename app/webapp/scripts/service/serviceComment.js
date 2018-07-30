@@ -1,8 +1,8 @@
 (function(angular){
 	var app = angular.module('module.service.comment',[]);
 	app.service('serviceComment',['$http',function($http){
-		this.all = function(article,callback){
-			$http.post('comment/all',{article})
+		this.all = function(intent,callback){
+			$http.post('comment/all',intent)
 			.then(function successCallback(res){
 				callback(res.data);
 			},function errorCallback(res){

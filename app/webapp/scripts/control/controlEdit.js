@@ -25,7 +25,7 @@
 			//
 			//根据路由参数博客的id值查询数据，填充到博客编辑页面上
 			if(angular.isNumber($scope.$eval($routeParams.article))){
-				serviceArticle.get($routeParams.article,function(data){
+				serviceArticle.get({id : $routeParams.article},function(data){
 					$scope.article = data;
 					$scope.article.category = $scope.article.category.id;
 				});

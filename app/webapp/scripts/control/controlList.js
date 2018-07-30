@@ -1,7 +1,6 @@
 (function(angular){
 	var app = angular.module('module.control.list',[
 		'ngRoute',
-		'ngCookies',
 		'module.service.article',
 		'module.service.category'
 	]);
@@ -13,11 +12,9 @@
 	}]);
 	app.controller('controlList',[
 		'$scope',
-		'$location',
 		'$routeParams',
 		'serviceArticle',
-		'serviceCategory',
-		function($scope,$location,$routeParams,serviceArticle,serviceCategory){
+		function($scope,$routeParams,serviceArticle){
         	$scope.category = $routeParams.category;
 			$scope.articles = serviceArticle.getArticles([{categoryname : $scope.category},{statu : 1}]);
 		}

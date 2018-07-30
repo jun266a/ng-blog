@@ -28,9 +28,9 @@
 			});
 			return articles;
 		};
-		this.get = function(id,callback){
+		this.get = function(intent,callback){
 			articles = [];
-			$http.post('article/select',{id})
+			$http.post('article/select',intent)
 			.then(function successCallback(res){
 				angular.forEach(res.data,function(item,index,array){
 					this.push({
