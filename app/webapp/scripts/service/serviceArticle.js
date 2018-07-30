@@ -72,8 +72,8 @@
 				console.log(res);
 			});
 		};
-		this.update = function(){
-			$http.post('article/update',article)
+		this.update = function(article,id){
+			$http.post('article/update',[article,{id}])
 			.then(function successCallback(res){
 				switch (res.data.status){
 					case 0:	

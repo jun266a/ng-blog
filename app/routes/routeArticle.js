@@ -26,6 +26,10 @@ router.post('/select',function(req,res){
 		res.json(results);
 	});
 });
-router.post('/replace',function(){});
+router.post('/update',function(req,res){
+	article.update(req.body,function(results){
+		res.json(results);
+	});
+});
 
 module.exports = router;

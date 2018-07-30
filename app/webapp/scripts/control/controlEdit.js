@@ -14,10 +14,11 @@
 	app.controller('controlEdit',[
 		'$scope',
 		'$routeParams',
+		'$location',
 		'serviceUser',
 		'serviceArticle',
 		'serviceCategory',
-		function($scope,$routeParams,serviceUser,serviceArticle,serviceCategory){
+		function($scope,$routeParams,$location,serviceUser,serviceArticle,serviceCategory){
 			$scope.user = serviceUser.getUser();
 			//angular.isNumber($scope.$eval(str or num))
 			//这是‘唯一’成功的区别字符串和数字的方式，不论是Number()、parseInt()、$parse()[注入]都不能很好的区分
@@ -36,13 +37,17 @@
 				article.user = $scope.user.UID;
 				article.date = article.date? article.date :new Date().toLocaleDateString();
 				article.statu = statu;
-				if(article.id){
+				id = article.id;
+				if(id){
 					//根据博客的id，区别提交是插入还是更新
 					//当有博客的id时，提交是更新
-					serviceArticle.update(article);
+					delete article.id;
+					serviceArticle.update(article,id);
+					$location.path('/user/post/all');
 				}else{
 					//当没有博客的id时，提交是出插入
 					serviceArticle.put(article);
+					$location.path('/user/post/all');
 				}
 			};
 		}
