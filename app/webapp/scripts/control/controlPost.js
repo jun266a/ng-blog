@@ -31,21 +31,20 @@
 	        	});
 	        }
 	        $scope.categories = $scope.user.categories;
-	        console.log($scope.categories);
 	        switch ($scope.status){
 	        	case 'all':
-					$scope.articles = serviceArticle.getArticles([{user :$scope.user.UID},{statu : 1}]);
+	        		$scope.statu = 1;
 	        		break;
 	        	case 'draft':
-					$scope.articles = serviceArticle.getArticles([{user :$scope.user.UID},{statu : 0}]);
+	        		$scope.statu = 0;
 	        		break;
 	        	case 'deleted':
-					$scope.articles = serviceArticle.getArticles([{user :$scope.user.UID},{statu : -1}]);
+	        		$scope.statu = -1;
 	        		break;
 	        	default:
 	        		break;
 	        }
-
+			$scope.articles = serviceArticle.getArticles([{user :$scope.user.UID},{statu : $scope.statu}]);
 		}
 	]);
 })(angular);

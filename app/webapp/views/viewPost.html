@@ -14,6 +14,7 @@
 	    	<div class="panel panel-default col-sm-12">
 			  	<!-- Default panel contents -->
 			  	<div class="panel-body">
+			  		<!--//angular.copy()-->
 			    	<form class="form-inline" ng-submit="selector = article">
 					  	<div class="form-group">
 					    	<label >标题</label>
@@ -22,7 +23,7 @@
 					  	<div class="form-group">
 					    	<label >分类</label>
 					    	<select class="form-control" ng-model="article.category.name" 
-									ng-options="item.category as item.name for item in categories" >
+									ng-options="item.name as item.text for item in categories" >
 							</select>
 					  	</div>
 					  	<button type="submmit" class="btn btn-default">搜索</button>

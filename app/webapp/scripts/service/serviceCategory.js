@@ -15,8 +15,8 @@
 				var categories = [];
 				angular.forEach(res.data,function(item){
 					this.push({
-						category : item.category,
-						name : item.name
+						name : item.name,
+						text : item.text
 					});
 				},categories);
 				callback({categories});
