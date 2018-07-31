@@ -47,3 +47,15 @@ ul.navbar-left{
 .dropdown-menu li a{
 	color: white;
 }
+.navbar-form input{
+	background-color: #333333;
+	color: white;
+	outline: none;
+	border: none;
+}
+.navbar-form button{
+	background-color: #333333;
+	color: white;
+	outline: none;
+	border: 1px solid transparent;
+}

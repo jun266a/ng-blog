@@ -9,6 +9,7 @@
 	    <!-- Bootstrap -->
 	    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	    <link rel="stylesheet" type="text/css" href="styles/nav.css"/>
+	    <link rel="stylesheet" type="text/css" href="styles/view.css"/>
 	    <style type="text/css">
 	    	.ng-cloak{
 		        display: none;
@@ -22,22 +23,10 @@
 		    .ng-hide {
 		    	opacity: 0;
 			}
-			.navbar-form input{
-				background-color: #333333;
-				color: white;
-				outline: none;
-				border: none;
-			}
-			.navbar-form button{
-				background-color: #333333;
-				color: white;
-				outline: none;
-				border: 1px solid transparent;
-			}
+			
 	    </style>
 	</head>
 	<body ng-app="module.index">
-
 	    	<nav class="navbar navbar-inverse">
 			  	<div class="container-fluid">
 				    <ul class="nav navbar-nav navbar-left">
@@ -78,9 +67,9 @@
 			    	<h2>Hello, world!</h2>
 			  	</div>
 			</div>
-	    <div class="container-fluid">
+	    <div class="container">
 	    	<div class="row">
-	    		<div class="col-md-offset-1 col-md-11 ">
+	    		<div class="col-md-offset-1 col-md-11 " >
 	    			<!--<div class="col-md-3">
 	    				<a href="#/list/all">
 	    					<div class="rounded">
@@ -98,7 +87,9 @@
 		    				</div>
 	    				</a>
 	    			</div>-->
-	    			<div class="col-md-offset-3 " ng-view></div>
+	    			<div class="col-md-offset-3 page" >
+	    				<div class="view" ng-view></div>
+	    			</div>
 	    		</div>
 	    	</div>
 	    </div>

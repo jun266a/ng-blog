@@ -1,0 +1,25 @@
+.page{
+	position: relative;
+}
+.view{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	transition: all linear .5s;
+}
+.view.ng-enter{ 
+	opacity:0;
+	transform: translateX(-200px);
+}
+.view.ng-enter-active{ 
+	opacity:1;
+}
+.view.ng-leave{ 
+	opacity:1;
+}
+.view.ng-leave-active{ 
+	opacity:0;
+	transform: translateX(200px);
+}
