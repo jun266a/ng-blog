@@ -8,6 +8,7 @@
 	
 	    <!-- Bootstrap -->
 	    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	    <link rel="stylesheet" type="text/css" href="styles/nav.css"/>
 	    <style type="text/css">
 	    	.ng-cloak{
 		        display: none;
@@ -21,30 +22,37 @@
 		    .ng-hide {
 		    	opacity: 0;
 			}
-			.dropdown:hover .dropdown-menu {
-			    display: block;
+			.navbar-form input{
+				background-color: #333333;
+				color: white;
+				outline: none;
+				border: none;
+			}
+			.navbar-form button{
+				background-color: #333333;
+				color: white;
+				outline: none;
+				border: 1px solid transparent;
 			}
 	    </style>
 	</head>
 	<body ng-app="module.index">
-	    <div class="container">
-	    	<nav class="navbar navbar-default">
+
+	    	<nav class="navbar navbar-inverse">
 			  	<div class="container-fluid">
-				    <div class="navbar-header">
-				      	<a class="navbar-brand" href="#">Brand</a>
-				    </div>
-				    <ul class="nav navbar-nav">
-					    <li ng-class="{active:path.startsWith('/list/traval')}"><a href="#/list/traval">旅游</a></li>
-					    <li ng-class="{active:path.startsWith('/list/sports')}"><a href="#/list/sports">运动</a></li>
-					    <li ng-class="{active:path.startsWith('/list/culture')}"><a href="#/list/culture">文化</a></li>
-					    <li ng-class="{active:path.startsWith('/list/health')}"><a href="#/list/health">健康</a></li>
-					    <li ng-class="{active:path.startsWith('/list/science')}"><a href="#/list/science">科学</a></li>
-					    <li ng-class="{active:path.startsWith('/list/technology')}"><a href="#/list/technology">技术</a></li>
-					    <li ng-class="{active:path.startsWith('/list/economic')}"><a href="#/list/economic">经济</a></li>
+				    <ul class="nav navbar-nav navbar-left">
+				    	<li ng-class="{active:path.startsWith('/list')}"><a href="#/list" title="首页">首页</a></li>
+					    <li ng-class="{active:path.startsWith('/list/traval')}"><a href="#/list/traval" title="旅游">旅游</a></li>
+					    <li ng-class="{active:path.startsWith('/list/sports')}"><a href="#/list/sports" title="运动">运动</a></li>
+					    <li ng-class="{active:path.startsWith('/list/culture')}"><a href="#/list/culture" title="文化">文化</a></li>
+					    <li ng-class="{active:path.startsWith('/list/health')}"><a href="#/list/health" title="健康">健康</a></li>
+					    <li ng-class="{active:path.startsWith('/list/science')}"><a href="#/list/science" title="科学">科学</a></li>
+					    <li ng-class="{active:path.startsWith('/list/technology')}"><a href="#/list/technology" title="技术">技术</a></li>
+					    <li ng-class="{active:path.startsWith('/list/economic')}"><a href="#/list/economic" title="经济">经济</a></li>
 				    </ul>
 				    <ul class="nav navbar-nav navbar-right">
 				    	<li class="dropdown">
-				    		<a href="javascript:void(0)">个人中心 <span class="caret"></span></a>
+				    		<a href="javascript:void(0)" title="个人中心">个人中心</span></a>
 				    		<ul class="dropdown-menu">
 				    			<li><a href="#/user/post/all">博客管理</a></li>
 				    			<li><a href="#/user/edit/new">编辑博客</a></li>
@@ -55,12 +63,22 @@
 				    </ul>
 				    <form class="navbar-form navbar-right">
 				        <div class="form-group">
-				          	<input type="text" class="form-control" placeholder="Search">
+				        	<div class="input-group">
+					          	<input type="text" class="form-control" placeholder="Search">
+					          	<span class="input-group-btn">
+					          		<button type="submit" class="btn btn-default">搜索</button>
+					          	</span>
+				        	</div>
 				        </div>
-				        <button type="submit" class="btn btn-default">搜索</button>
 				    </form>
 			  	</div><!-- /.container-fluid -->
 			</nav>
+	    	<div class="jumbotron">
+			  	<div class="container">
+			    	<h2>Hello, world!</h2>
+			  	</div>
+			</div>
+	    <div class="container-fluid">
 	    	<div class="row">
 	    		<div class="col-md-offset-1 col-md-11 ">
 	    			<!--<div class="col-md-3">
